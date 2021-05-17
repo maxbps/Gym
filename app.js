@@ -2,13 +2,30 @@ const btns = document.querySelectorAll('.btn-modale')
 const modaleEquipement = document.querySelector('.bloc-modale')
 const imgIndex = document.querySelector('.bloc-modale img')
 
-btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        imgIndex.src = `ressources/img${e.target.getAttribute('data-index')}-equip.jpg`
-        modaleEquipement.classList.add('active-modale')
-    })
-})
+if (window.matchMedia("(min-width:850px)").matches) {
 
-modaleEquipement.addEventListener('click', () => {
-    modaleEquipement.classList.remove('active-modale')
+    btns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            imgIndex.src = `ressources/img${e.target.getAttribute('data-index')}-equip.jpg`
+            modaleEquipement.classList.add('active-modale')
+        })
+    })
+
+    modaleEquipement.addEventListener('click', () => {
+        modaleEquipement.classList.remove('active-modale')
+    })
+
+}
+
+// Anom nav bar
+const nav = document.querySelector('nav')
+
+window.addEventListener('scroll', () => {
+
+    if (window.scrollY > 60) {
+        nav.classList.add('anim-nav')
+    } else {
+        nav.classList.remove('anim-nav')
+    }
+
 })
